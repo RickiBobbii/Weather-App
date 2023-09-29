@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/style.css"/>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+  </head>
+  <body class="has-background-grey-light">
+   
+    <!-- navbar -->
+    <nav class="container is-fluid">
+        <div class="notification is-link has-text-centered">
+            <strong class="is-size-3">Weather Dashboard</strong>
+        </div>
+       
+    </nav>
+    <!-- aside bar with search bar and recent history tabs -->
+    <section class="section">   
+        <div class="container">
+            <div class="columns is-centered">
+                <aside class="column is-2 has-background-primary">
+                    <!-- search bar -->
+                    <div class="field has-addons">
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Search for City">
+                        </div>
+                        <div class="control">
+                            <a class="button is-info">
+                            Search
+                            </a>
+                        </div>
+                    </div>
+                    <!-- search history selectors -->
+                    <div class="select is-multiple">
+                        <select multiple size="10">
+                            <option value="Argentina">Argentina</option>
+                            <option value="Bolivia">Bolivia</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="Chile">Chile</option>
+                            <option value="Colombia">Colombia</option>
+                            <option value="Ecuador">Ecuador</option>
+                            <option value="Guyana">Guyana</option>
+                            <option value="Paraguay">Paraguay</option>
+                            <option value="Peru">Peru</option>
+                            <option value="Suriname">Surinamename</option>
+                            <option value="Uruguay">Uruguay</option>
+                            <option value="Venezuela">Venezuela</option>
+                        </select>
+                    </div>
+                </aside>
+                <!-- container for displaying search city -->
+                <div class="card column is-two-thirds has-background-light">
+                    <!-- add ICON for weather condition -->
+                    <p class="title">City</p>
+                    <p>Temp</p>
+                    <p>Wind</p>
+                    <p>Humidity</p>    
+                </div>
+                
+            </div>
+        </div>
+    </section>    
+    <!-- container for searched city 5 day forcast -->      
+    <section class="section">   
+        <div class="container">
+            <div class="columns is-centered">
+                 <div class="card column is-2 has-background-grey-light">
+                    <div class="card-content has-background-light">
+                        <p class=" title is-size-4">Date</p>
+                        <!-- testing cloud icon -->
+                        <i class="fa-solid fa-cloud"></i>
+                        <p>Temp</p>
+                        <p>Wind</p>
+                        <p>Humidity</p>   
+                    </div>
+                 </div>
+                 <div class="card column is-2 has-background-grey-light">
+                    <div class="card-content has-background-light">
+                        <p class="title is-size-4">Date</p>
+                        <div id="icon"><img id="wicon" src="" alt="Weather icon"></div>
+                        <p>Temp</p>
+                        <p>Wind</p>
+                        <p>Humidity</p>   
+                    </div>
+                 </div>
+                 <div class="card column is-2 has-background-grey-light">
+                    <div class="card-content has-background-light">
+                        <p class="title is-size-4">Date</p>
+                        <div id="icon"><img id="wicon" src="" alt="Weather icon"></div>
+                        <p>Temp</p>
+                        <p>Wind</p>
+                        <p>Humidity</p>   
+                    </div>
+                 </div>
+                 <div class="card column is-2 has-background-grey-light">
+                    <div class="card-content has-background-light">
+                        <p class="title is-size-4">Date</p>
+                        <div id="icon"><img id="wicon" src="" alt="Weather icon"></div>
+                        <p>Temp</p>
+                        <p>Wind</p>
+                        <p>Humidity</p>   
+                    </div>
+                 </div>
+                 <div class="card column is-2 has-background-grey-light">
+                    <div class="card-content has-background-light">
+                        <p class="title is-size-4">Date</p>
+                        <div id="icon"><img id="wicon" src="" alt="Weather icon"></div>
+                        <p>Temp</p>
+                        <p>Wind</p>
+                        <p>Humidity</p>   
+                    </div>
+                 </div>
+            </div>
+        </div>        
+    </section>
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="./assets/script.js"></script>
+
+  </body>
+</html>
