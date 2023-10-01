@@ -4,11 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/style.css"/>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
     
   </head>
   <body class="has-background-grey-light">
@@ -20,11 +19,12 @@
         </div>
        
     </nav>
-    <!-- aside bar with search bar and recent history tabs -->
+    <!-- main section with search and current displayed city -->
     <section class="section">   
         <div class="container">
             <div class="columns is-centered">
-                <aside class="column is-2 has-background-primary">
+                <!-- aside bar with search bar and recent history tabs -->
+                <aside class="column is-3 has-background-dark">
                     <!-- search bar -->
                     <div class="field has-addons">
                         <div class="control">
@@ -55,26 +55,39 @@
                     </div>
                 </aside>
                 <!-- container for displaying search city -->
-                <div class="card column is-two-thirds has-background-light">
+                <div id="hero-card" class="card column is-two-thirds has-background-light has-text-centered">
                     <!-- add ICON for weather condition -->
-                    <p class="title">City</p>
-                    <p>Temp</p>
-                    <p>Wind</p>
-                    <p>Humidity</p>    
+                    <p id="hero-city" class="title">City</p>
+                    <p id="hero-date" class="is-size-4">Date</p>
+                        <!-- testing cloud icon -->
+                        <!-- <span class="icon"> -->
+                            <p class="">
+                            <img class="has-background-info" id="hero-icon"></img>
+                            </p>
+                         <!-- </span>  -->
+                    <p id="hero-temp" class="is-size-4">Temp</p>
+                    <p id="hero-wind">Wind</p>
+                    <p id="hero-humidity">Humidity</p>    
                 </div>
                 
             </div>
         </div>
-    </section>    
+    </section> 
+    
     <!-- container for searched city 5 day forcast -->      
-    <section class="section">   
+    <section class="section has-text-centered pt-0">
+        <!-- 5 day title div -->
+        <p class="title">5-Day Forecast:</p>  
+     
         <div class="container">
             <div class="columns is-centered">
                  <div class="card column is-2 has-background-grey-light">
                     <div class="card-content has-background-light">
                         <p class=" title is-size-4">Date</p>
                         <!-- testing cloud icon -->
-                        <i class="fa-solid fa-cloud"></i>
+                        <span class="icon">
+                            <i class="fas fa-cloud"></i>
+                          </span>
                         <p>Temp</p>
                         <p>Wind</p>
                         <p>Humidity</p>   
@@ -119,9 +132,13 @@
             </div>
         </div>        
     </section>
-    
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="./assets/script.js"></script>
+    <footer class="footer has-background-grey-light"></footer>
+   
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+            integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+            crossorigin="anonymous"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./assets/script.js"></script>
 
   </body>
 </html>
