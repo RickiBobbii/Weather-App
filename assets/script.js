@@ -4,7 +4,6 @@ const apiKey = "20289076a9624ee927b2ed1686967655";
 const cityInput = document.querySelector("#city-input");
 const searchBtn = document.querySelector(".button");
 
-
 //function to Render Weather
 function renderWeather(weather) {
     console.log(weather);
@@ -34,9 +33,9 @@ function renderWeather(weather) {
     for (i = 1; i < 6; i++) {
       var date = document.querySelector('#date' + i);
       var timestamp = weather.list[i * 7].dt;  //grabbing index at middle timestamps
-      console.log(timestamp);
+      //console.log(timestamp);
       date.innerHTML = dayjs.unix(timestamp).format('MMMM D, YYYY');
-      console.log("Timestamp after dayjs " + timestamp);
+      //console.log("Timestamp after dayjs " + timestamp);
 
       var icon = document.querySelector('#icon' + i)
       var iconcode1 = weather.list[i * 7].weather[0].icon;
@@ -45,7 +44,7 @@ function renderWeather(weather) {
 
       var temp = document.querySelector('#temp' + i);
       var tempIndex = weather.list[i * 7].main.temp;
-      console.log("tempIndex " + tempIndex);
+      //console.log("tempIndex " + tempIndex);
       temp.innerHTML = "Temp: " + tempIndex + " F";
 
       var wind1 = document.querySelector('#wind' + i);
@@ -62,16 +61,6 @@ function fetchWeather(query) {
     const cityName = cityInput.value.trim();
     const url = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + ",us&units=imperial&limit=1&appid=" + apiKey;
 
-    // fetch(url)
-    //     .then(function(response) {
-    //         return response.json();
-    //     })
-    //     .then(function(data) {
-    //        renderWeather(data);
-    //     })
-    //      //clear search input
-    //     console.log("cityName is " + cityName);
-    //     cityInput.value = "";
     fetch(url)
     .then(function (response) {
       if (response.ok) {
@@ -85,13 +74,62 @@ function fetchWeather(query) {
         .catch(function (error) {
         alert('Unable to connect to server');
     });
+    //set local storage
+    localStorage.setItem("CityName", JSON.stringify(cityName));
+    //get local storage and append to options
+    var getCityName = JSON.parse(localStorage.getItem("CityName"));
+    if (getCityName !== null) {
+      //append
+      function renderCityNames() {
+        // Render a new option for each cityName
+          var selectBar = document.querySelector('#select-box');
+          var option = document.createElement("option");
+          option.textContent = cityName.toUpperCase();
+          option.setAttribute("value", cityName);
+      
+          selectBar.appendChild(option);  
+      }
+      cityInput.value = "";
+      renderCityNames();
+      //event listener for list name select
+
+    }
+    
     //clear search input
     console.log("cityName is " + cityName);
-    cityInput.value = "";
+    //cityInput.value = "";   //moved to line 100
 }
+//function for select-box fetch weather
+function fetchWeatherSelect(query) {
+  //try Fix looping options issue
+  var option = document.querySelectorAll("option");
+  var citySelect = "";
+  for (i = 0; i < option.length; i++){
+    if(option[i].selected) {
+      citySelect += option[i].value + ",";
+    }
+  }
+  citySelect = citySelect.slice(0, -1);  //for loop and slice helped with bing Ai
+  console.log(citySelect);
+  const cityName = citySelect
+  const url = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + ",us&units=imperial&limit=1&appid=" + apiKey;
 
+  fetch(url)
+  .then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
+        renderWeather(data);
+      });
+      } else {
+      alert('Error: ' + response.statusText);
+      }
+      })
+      .catch(function (error) {
+      alert('Unable to connect to server');
+  }); 
+}
 //event listener for search submit
-
 searchBtn.addEventListener('click', fetchWeather);
+document.querySelector('#select-box').addEventListener('change', fetchWeatherSelect);
 
 });
