@@ -89,19 +89,16 @@ function fetchWeather(query) {
       
           selectBar.appendChild(option);  
       }
+      //clear search input
       cityInput.value = "";
       renderCityNames();
-      //event listener for list name select
-
+      
     }
-    
-    //clear search input
     console.log("cityName is " + cityName);
-    //cityInput.value = "";   //moved to line 100
 }
 //function for select-box fetch weather
 function fetchWeatherSelect(query) {
-  //try Fix looping options issue
+  //looping search history options tags 
   var option = document.querySelectorAll("option");
   var citySelect = "";
   for (i = 0; i < option.length; i++){
